@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: mentor
+    password: 240101
+    url: jdbc:mysql://localhost:3306/mentor_management?characterEncoding=utf8&useUnicode=true&mysqlEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Seoul
+
+  jpa:
+    hibernate:
+      ddl-auto: create # DDL(create, alter, drop) 정의시 DB의 고유 기능을 사용할 수 있다.
+    properties:
+      hibernate:
+        format_sql: true # JPA의 구현체인 Hibernate가 동작하면서 발생한 SQL의 가독성을 높여준다.
+        show_sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+jwt:
+  header: Authorization
+  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
+  #echo 'silvernine-tech-spring-boot-jwt-tutorial-secret-silvernine-tech-spring-boot-jwt-tutorial-secret'|base64
+  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+  token-validity-in-seconds: 86400
+
+logging:
+  level:
+    me.silvernine: DEBUG
+
+server:
+  port: 9090  # 원하는 포트 번호로 변경
